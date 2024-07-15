@@ -1,15 +1,12 @@
 import { Button } from "@/components/ui/button"
-import { Image, Smile, SendHorizontal } from 'lucide-react';
-import { Textarea } from "@/components/ui/textarea"
+import { Image, Smile, SendHorizontal } from 'lucide-react'
+
 
 
 export default function Chat() {
     return (
         <>
-            <div className="container bg-slate-300 h-screen">
-
-            </div>
-            {/* <div className="max-w-2xl mx-auto mt-96">
+            <div className="max-w-2xl mx-auto ">
                 <form>
                     <label htmlFor="chat" className="sr-only">Your message</label>
                     <div className="flex items-center py-2 px-3 bg-gray-50 rounded-lg dark:bg-gray-700">
@@ -30,7 +27,7 @@ export default function Chat() {
                         </Button>
                     </div>
                 </form>
-            </div> */}
+            </div>
         </>
     )
 }
