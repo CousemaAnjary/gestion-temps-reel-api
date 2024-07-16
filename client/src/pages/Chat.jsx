@@ -10,7 +10,7 @@ export default function Chat() {
             <div className="max-w-2xl mx-auto mt-96">
                 <form>
                     <label htmlFor="chat" className="sr-only">Your message</label>
-                    <div className="flex items-center py-2 px-3 bg-gray-50 rounded-lg ">
+                    <div className="flex items-center py-2 px-3 bg-gray-50 rounded-lg border ">
                         <Button variant="ghost" className="p-2">
                             <Image className="" />
                         </Button>
@@ -28,7 +28,7 @@ export default function Chat() {
                             placeholder="Pseudo"
                             className="w-32"
                         />
-                        <Button variant="ghost" className="p-2">
+                        <Button variant="ghost" className="p-2 ml-3">
                             <SendHorizontal />
                         </Button>
 
