@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import echo from "@/services/config/echoConfig"
+import { createMessage } from "@/services/chatService"
 import { Image, Smile, SendHorizontal } from 'lucide-react'
 
 
@@ -38,8 +39,8 @@ export default function Chat() {
 
         const channel = echo.channel('chat')
 
-        channel.listen('.chat-', (e) => {
-
+        channel.listen('.chat-message', (e) => {
+            console.log(e)
         })
 
     }, [])
