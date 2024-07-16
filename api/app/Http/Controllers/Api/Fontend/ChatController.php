@@ -20,10 +20,10 @@ class ChatController extends Controller
     {
         $validatedData = $request->validate([
             'pseudo' => 'required|string',
-            'chat' => 'required|string',
+            'message' => 'required|string',
         ]);
 
-        event(new ChatMessageEvent($validatedData['pseudo'], $validatedData['chat']));
+        event(new ChatMessageEvent($validatedData['pseudo'], $validatedData['message']));
 
         return response()->json([
             'status' => 'success',
