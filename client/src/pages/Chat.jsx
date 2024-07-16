@@ -1,18 +1,20 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import echo from "@/services/config/echoConfig"
 import { Image, Smile, SendHorizontal } from 'lucide-react'
+
 
 
 export default function Chat() {
     /**
      * ! STATE (état, données) de l'application
      */
-    const [chat, setChat] = useState()
-    const [pseudo, setPseudo] = useState()
+    const [chat, setChat] = useState('')
+    const [pseudo, setPseudo] = useState('')
 
     // Données à envoyer à l'API pour créer un message
-    const data = { chat: chat, pseudo: pseudo }
+    const messageData = { chat: chat, pseudo: pseudo }
 
 
 
@@ -24,12 +26,23 @@ export default function Chat() {
         e.preventDefault()
 
         try {
-            console.log('message envoyé', data)
+            // Appel de l'API pour créer un message
+            await createMessage(messageData)
 
         } catch (error) {
             console.error('Erreur lors de la création du message', error)
         }
     }
+
+    useEffect(() => {
+
+        const channel = echo.channel('chat')
+
+        channel.listen('.chat-', (e) => {
+
+        })
+
+    }, [])
 
     /**
      * ! AFFICHAGE (render) de l'application
