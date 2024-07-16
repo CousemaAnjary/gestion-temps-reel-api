@@ -1,48 +1,53 @@
-import { useState, useEffect } from "react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import echo from "@/services/config/echoConfig"
-import { createMessage } from "@/services/chatService"
-import { Image, Smile, SendHorizontal } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import echo from "@/services/config/echoConfig";
+import { createMessage } from "@/services/chatService";
+import { Image, Smile, SendHorizontal } from 'lucide-react';
 
 export default function Chat() {
     /**
      * ! STATE (état, données) de l'application
      */
-    const [chat, setChat] = useState('')
-    const [pseudo, setPseudo] = useState('')
-    const [messages, setMessages] = useState([])
+    const [chat, setChat] = useState('');
+    const [pseudo, setPseudo] = useState('');
+    const [messages, setMessages] = useState([]);
 
     // Données à envoyer à l'API pour créer un message
-    const messageData = { message: chat, pseudo: pseudo }
+    const messageData = { message: chat, pseudo: pseudo };
 
     /**
      * ! COMPORTEMENT (méthodes, fonctions) de l'application
      */
     const handleSubmit = async (e) => {
         // Empêcher le rechargement de la page
-        e.preventDefault()
+        e.preventDefault();
+
+        // Ajouter le message immédiatement pour un effet optimiste
+        setMessages((prevMessages) => [...prevMessages, messageData]);
+        setChat(''); // Réinitialiser le champ de chat après l'envoi
 
         try {
             // Appel de l'API pour créer un message
-            await createMessage(messageData)
-            setChat('') // Réinitialiser le champ de chat après l'envoi
+            await createMessage(messageData);
         } catch (error) {
-            console.error('Erreur lors de la création du message', error)
+            console.error('Erreur lors de la création du message', error);
+            // Retirer le message si l'envoi échoue
+            setMessages((prevMessages) => prevMessages.filter((msg) => msg !== messageData));
         }
     };
 
     useEffect(() => {
-        const channel = echo.channel('chat')
+        const channel = echo.channel('chat');
 
         channel.listen('.chat-message', (e) => {
             // Ajouter le message reçu à la liste des messages et le pseudo 
-            setMessages((prevMessages) => [...prevMessages, e])
+            setMessages((prevMessages) => [...prevMessages, e]);
         });
 
-        // Nettoyer l'écouteur d'événement lors du démontage du composant
+        // Cleanup on unmount
         return () => {
-            channel.stopListening('.chat-message')
+            channel.stopListening('.chat-message');
         };
     }, []);
 
@@ -50,7 +55,7 @@ export default function Chat() {
      * ! AFFICHAGE (render) de l'application
      */
     return (
-        <div className="max-w-2xl mx-auto mt-96">
+        <div className="max-w-2xl mx-auto mt-20">
             <div id="chat" className="flex flex-col py-2 px-3 rounded-lg border border-b-0 rounded-b-none">
                 {messages.map((mes, index) => (
                     <div key={index} className="flex items-center justify-between py-2 px-3 bg-gray-50 rounded-lg border mb-2">
