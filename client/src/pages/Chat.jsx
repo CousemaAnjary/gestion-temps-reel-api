@@ -40,7 +40,7 @@ export default function Chat() {
             setMessages((prevMessages) => [...prevMessages, e]);
         });
 
-        // Cleanup on unmount
+        // Nettoyer l'écouteur d'événement lors du démontage du composant
         return () => {
             channel.stopListening('.chat-message');
         };
