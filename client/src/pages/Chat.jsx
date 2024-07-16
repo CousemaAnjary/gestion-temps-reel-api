@@ -1,19 +1,36 @@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Image, Smile, SendHorizontal } from 'lucide-react'
+import { c } from "vite/dist/node/types.d-aGj9QkWt"
 
 
 export default function Chat() {
     /**
      * ! STATE (état, données) de l'application
      */
+    const [chat, setChat] = useState()
+    const [pseudo, setPseudo] = useState()
+
+    // Données à envoyer à l'API pour créer un message
+    const data = { chat: chat, pseudo: pseudo }
+
 
 
     /**
      * ! COMPORTEMENT (méthodes, fonctions) de l'application
      */
+    const handleSubmit = async (e) => {
+        // Empêcher le rechargement de la page
+        e.preventDefault()
 
+        try {
+            // Appel de l'API pour créer un message
+            const response = await api.post('/chats', data)
 
+        } catch (error) {
+            console.error('Erreur lors de la création du message', error)
+        }
+    }
 
     /**
      * ! AFFICHAGE (render) de l'application
@@ -41,6 +58,8 @@ export default function Chat() {
                         <textarea
                             name="chat"
                             id="chat"
+                            value={chat}
+                            onChange={(e) => setChat(e.target.value)}
                             rows="1"
                             className="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Aa"
@@ -48,6 +67,8 @@ export default function Chat() {
                         <Input
                             name="pseudo"
                             type="email"
+                            value={pseudo}
+                            onChange={(e) => setPseudo(e.target.value)}
                             placeholder="Pseudo"
                             className="w-32"
                         />

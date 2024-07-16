@@ -13,3 +13,16 @@ export const getMessages = async () => {
         console.error('Erreur lors de l\'obtention des messages', error)
     }
 }
+
+// Créer un message
+export const createMessage = async (messageData) => {
+
+    try {
+        // Appel de l'API pour créer un message
+        const response = await api.post('/chat', messageData)
+        return response.data // Retourne le message créé
+
+    } catch (error) {
+        console.error('Erreur lors de la création du message', error)
+    }
+}
