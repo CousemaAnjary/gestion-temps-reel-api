@@ -18,11 +18,16 @@ class ChatController extends Controller
 
     public function store(Request $request)
     {
-        event(new ChatMessageEvent($request->pseudo, $request->message));
+        $validatedData = $request->validate([
+            'pseudo' => 'required|string',
+            'chat' => 'required|string',
+        ]);
+
+        event(new ChatMessageEvent($validatedData['pseudo'], $validatedData['chat']));
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Chat Message sent'
-        ]);
+            'message' => 'Chat Message sent',
+        ], 201);
     }
 }
