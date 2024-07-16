@@ -30,6 +30,7 @@ export default function Chat() {
         try {
             // Appel de l'API pour créer un message
             await createMessage(messageData);
+            
         } catch (error) {
             console.error('Erreur lors de la création du message', error);
             // Retirer le message si l'envoi échoue
