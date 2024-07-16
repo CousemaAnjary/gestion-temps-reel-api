@@ -1,7 +1,7 @@
+import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Image, Smile, SendHorizontal } from 'lucide-react'
-import { c } from "vite/dist/node/types.d-aGj9QkWt"
 
 
 export default function Chat() {
@@ -24,8 +24,7 @@ export default function Chat() {
         e.preventDefault()
 
         try {
-            // Appel de l'API pour créer un message
-            const response = await api.post('/chats', data)
+            console.log('message envoyé', data)
 
         } catch (error) {
             console.error('Erreur lors de la création du message', error)
@@ -66,7 +65,7 @@ export default function Chat() {
                         />
                         <Input
                             name="pseudo"
-                            type="email"
+                            type="text"
                             value={pseudo}
                             onChange={(e) => setPseudo(e.target.value)}
                             placeholder="Pseudo"
