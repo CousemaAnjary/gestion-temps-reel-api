@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import { Image, Smile, SendHorizontal } from 'lucide-react'
 
 
-
 export default function Chat() {
     return (
         <>
