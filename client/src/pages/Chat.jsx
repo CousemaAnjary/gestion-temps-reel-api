@@ -49,7 +49,7 @@ export default function Chat() {
     }, [])
 
 
-    
+
     /**
      * ! AFFICHAGE (render) de l'application
      */
@@ -96,5 +96,5 @@ export default function Chat() {
                 </div>
             </form>
         </div>
-    );
+    )
 }
