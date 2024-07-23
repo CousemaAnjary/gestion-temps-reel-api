@@ -37,13 +37,13 @@ export default function Chat() {
 
         channel.listen('.chat-message', (e) => {
             // Ajouter le message reçu à la liste des messages et le pseudo 
-            setMessages([...messages, { message: e.message, pseudo: e.pseudo }])
+            setMessages((prevMessages) => [...prevMessages, e])
         })
 
         // Nettoyer l'écouteur d'événement lors du démontage du composant
         return () => {
             channel.stopListening('.chat-message')
-        }
+        };
     }, [])
 
     /**
