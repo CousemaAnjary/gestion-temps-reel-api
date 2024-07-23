@@ -16,6 +16,8 @@ export default function Chat() {
     // Données à envoyer à l'API pour créer un message
     const messageData = { message: chat, pseudo: pseudo }
 
+
+    
     /**
      * ! COMPORTEMENT (méthodes, fonctions) de l'application
      */
