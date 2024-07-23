@@ -48,6 +48,8 @@ export default function Chat() {
         }
     }, [])
 
+
+    
     /**
      * ! AFFICHAGE (render) de l'application
      */
