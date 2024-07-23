@@ -17,7 +17,7 @@ export default function Chat() {
     const messageData = { message: chat, pseudo: pseudo }
 
 
-    
+
     /**
      * ! COMPORTEMENT (méthodes, fonctions) de l'application
      */
@@ -32,7 +32,7 @@ export default function Chat() {
         } catch (error) {
             console.error('Erreur lors de la création du message', error)
         }
-    };
+    }
 
     useEffect(() => {
         const channel = echo.channel('chat')
