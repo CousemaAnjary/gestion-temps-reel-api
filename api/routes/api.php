@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\Fontend\ChatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Fontend\ChatController;
+use App\Http\Controllers\Api\Frontend\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('chats', [ChatController::class, 'index']);
 Route::post('chat', [ChatController::class, 'store']);
+
+
+Route::get('posts', [PostController::class, 'index']);
