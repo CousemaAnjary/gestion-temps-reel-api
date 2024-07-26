@@ -37,7 +37,7 @@ export default function Chat() {
     useEffect(() => {
         const channel = echo.channel('chat')
 
-        channel.listen('.chat-message', (e) => {
+        channel.listen('.chat-event', (e) => {
             // Ajouter le message reçu à la liste des messages et le pseudo 
             setMessages((prevMessages) => [...prevMessages, e])
         })
