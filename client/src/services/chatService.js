@@ -21,7 +21,7 @@ export const createMessage = async (messageData) => {
     try {
         // Appel de l'API pour créer un message
         const response = await api.post('/chat', messageData)
-        return response.data // Retourne le message créé
+        return response.data // Retourne les données du message créé
 
     } catch (error) {
         console.error('Erreur lors de la création du message', error)

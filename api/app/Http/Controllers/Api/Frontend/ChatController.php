@@ -24,11 +24,11 @@ class ChatController extends Controller
             'pseudo' => 'required|string'
         ]);
 
-        broadcast(new chatEvent($validated['message'], $validated['pseudo']));
+         broadcast(new chatEvent($validated['message'], $validated['pseudo']));
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Message sent'
+            'message' => 'Message envoyé'
         ]);
     }
 }
