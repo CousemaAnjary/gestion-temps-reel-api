@@ -44,7 +44,7 @@ export default function Chat() {
 
         // Nettoyer l'écouteur d'événement lors du démontage du composant
         return () => {
-            channel.stopListening('.chat-message')
+            channel.stopListening('.chat-event')
         }
     }, [])
 
