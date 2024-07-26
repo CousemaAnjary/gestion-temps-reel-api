@@ -6,7 +6,7 @@ export const getMessages = async () => {
 
     try {
         // Appel de l'API pour obtenir tous les messages
-        const response = await api.get('chats')
+        const response = await api.get('/chats')
         return response.data.chats // Retourne les messages obtenus de l'API
 
     } catch (error) {

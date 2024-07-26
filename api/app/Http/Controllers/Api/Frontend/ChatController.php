@@ -10,12 +10,12 @@ class ChatController extends Controller
 {
     public function index()
     {
+        // Pour simplifier, renvoie un tableau vide. Vous pouvez ajouter la logique pour obtenir les messages si nécessaire.
         return response()->json([
             'status' => 'success',
-            'message' => 'Chat list'
+            'chats' => []
         ]);
     }
-
 
     public function store(Request $request)
     {
