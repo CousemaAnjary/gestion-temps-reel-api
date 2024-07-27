@@ -26,10 +26,9 @@ export default function Chat() {
 
         try {
             // Appel de l'API pour créer un message
-          const response = await createMessage(messageData);
+          await createMessage(messageData);
             setChat(''); // Réinitialiser le champ de chat après l'envoi
-            console.log('Message créé', response);
-
+       
         } catch (error) {
             console.error('Erreur lors de la création du message', error);
         }
